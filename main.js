@@ -9,25 +9,33 @@
 
 // Ready
 $("#my_btn").click(()=>{
-   
+	const sndA = new Howl({
+		src:"./sound/keikoku.mp3" //サウンドファイルのパス
+	  });
+	  
+
+
 	console.log("計算する")
    
-	const gasval =$("#my_gasoline").val();//文字列を取得
-	const numval1 =parseInt(gasval);//文字列->数値
-	console.log("ガソリン代:", numval1);
+	const htval =$("#ht").val();//文字列を取得
+	const numval1 =(htval);//文字列->数値
+	console.log("身長:", numval1);
 	
 
-   const  disval =$("#distanc").val();//文字列を取得
-	const numval2 =parseInt(disval);//文字列->数値
-	console.log("距離:", numval2);
+   const  wtval =$("#wt").val();//文字列を取得
+	const numval2 =(wtval);//文字列->数値
+	console.log("体重:", numval2);
 
-	const fulval =$("#Fuel").val();//文字列を取得
-	const numval3 =parseInt(fulval);//文字列->数値
-	console.log("車の燃費:", numval3);
 	
-	const gaso= parseInt(numval1*numval2/numval3)
-	console.log("ガソリン代;",gaso);
-	$("#gaso").text(gaso);
+	const bmi= (numval2/(numval1/100)**2)
+	console.log("BMI;",bmi.toFixed(1));
+	$("#bmi").text(bmi.toFixed(1));
+	if(bmi<=18.5)
+	sndA.play()
+	
+	
+if (bmi>=40)
+sndA.play()
 
 
 });
